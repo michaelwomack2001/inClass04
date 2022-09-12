@@ -2,4 +2,12 @@
     <string name="app_name">inclass04</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cs">Computer Science</string>
+    <string name="bio">Bio Informatics</string>
+    <string name="sft">Software Info. System</string>
+    <string name="data">Data Science</string>
+    <string name="cancel">Cancel</string>
+    <string name="select">Select</string>
+    <string name="submit">Submit</string>
+
 </resources>
