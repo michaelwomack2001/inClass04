@@ -14,8 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="100dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="50dp">
+        android:layout_marginStart="20dp">
 
 
         <RadioButton
@@ -47,7 +46,7 @@
         android:id="@+id/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
+        android:layout_gravity="bottom|start"
         android:layout_margin="60dp"
         android:text="@string/cancel" />
 
@@ -55,7 +54,7 @@
         android:id="@+id/select"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_margin="60dp"
         android:text="@string/select" />
 

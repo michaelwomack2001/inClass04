@@ -9,5 +9,14 @@
     <string name="cancel">Cancel</string>
     <string name="select">Select</string>
     <string name="submit">Submit</string>
+    <string name="registerBtn">Register</string>
+    <string name="welcome">Welcome !!</string>
+    <string name="name">Name:</string>
+    <string name="email">Email:</string>
+    <string name="id">ID:</string>
+    <string name="department">Dept:</string>
+    <string name="hintName">Enter Name</string>
+    <string name="hintEmail">Enter Email</string>
+    <string name="hintID">Enter ID</string>
 
 </resources>
