@@ -18,5 +18,13 @@
     <string name="hintName">Enter Name</string>
     <string name="hintEmail">Enter Email</string>
     <string name="hintID">Enter ID</string>
+    <string name="nameLbl2">Name:</string>
+    <string name="emailLbl2">Email:</string>
+    <string name="idLbl2">ID:</string>
+    <string name="deptLbl2">Dept:</string>
+    <string name="nameResult">%Name%</string>
+    <string name="emailResult">%Email%</string>
+    <string name="IdResult">%ID%</string>
+    <string name="deptResult">%Dept%</string>
 
 </resources>
