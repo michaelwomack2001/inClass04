@@ -22,7 +22,7 @@ import android.widget.Toast;
  */
 public class RegistrationFragment extends Fragment {
 
-
+    User user;
     EditText name_input, email_input, id_input;
     TextView dept_select;
 
@@ -105,6 +105,16 @@ public class RegistrationFragment extends Fragment {
                     toast2.setGravity(Gravity.CENTER, 0, 0);
                     toast2.show();
                 }
+                else{
+                    user = new User(name,email, id, dept_select.toString());
+
+
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragmentMain, new ProfileFragment());
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                }
+
 
             }
         });

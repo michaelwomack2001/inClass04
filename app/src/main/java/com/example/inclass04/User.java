@@ -1,10 +1,10 @@
 package com.example.inclass04;
 
 public class User {
-    String name, email, dept;
-    int id;
+    String name, email, dept, id;
 
-    public User( String name, String email, int id, String dept){
+
+    public User( String name, String email, String id, String dept){
         this.name = name;
         this.email = email;
         this.id = id;
@@ -19,7 +19,7 @@ public class User {
         return email;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

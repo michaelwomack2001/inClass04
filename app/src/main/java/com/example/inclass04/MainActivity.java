@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements SelectDepartmentF
         if (regFrag!=null){
             regFrag.update(department);
         }
+        getSupportFragmentManager().popBackStack();
+
 
 
 
