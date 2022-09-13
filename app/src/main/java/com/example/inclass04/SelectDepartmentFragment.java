@@ -100,12 +100,13 @@ public class SelectDepartmentFragment extends Fragment {
                     dept_out = "Data Science";
                 }
 
+
                 select_dept.getData(dept_out);
 
+
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragmentMain, new RegistrationFragment());
-                transaction.addToBackStack(null);
-                transaction.commit();
+                getActivity().getSupportFragmentManager().popBackStack();
+
             }
 
         });
@@ -113,7 +114,16 @@ public class SelectDepartmentFragment extends Fragment {
         return deptView;
     }
 
+
+
+
+    public interface DepartmentReceiver
+    {
+        void getData(String data);
+    }
+
     DepartmentReceiver select_dept;
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -125,8 +135,6 @@ public class SelectDepartmentFragment extends Fragment {
         }
     }
 
-    interface DepartmentReceiver
-    {
-        void getData(String data);
-    }
+
+
 }

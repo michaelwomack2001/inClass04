@@ -1,13 +1,15 @@
 package com.example.inclass04;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements SelectDepartmentFragment.DepartmentReceiver {
 
-    String department;
+    String departmentSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +22,8 @@ public class MainActivity extends AppCompatActivity implements SelectDepartmentF
 
         RegistrationFragment regFrag = (RegistrationFragment) getSupportFragmentManager().findFragmentByTag("RegFragment");
         if (regFrag!=null){
-            regFrag.update(department);
+            regFrag.update(departmentSet);
         }
-        getSupportFragmentManager().popBackStack();
-
 
 
 
@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements SelectDepartmentF
     @Override
     protected void onResume() {
         super.onResume();
+
+
     }
 
     @Override
@@ -39,9 +41,9 @@ public class MainActivity extends AppCompatActivity implements SelectDepartmentF
         super.onStart();
     }
 
+
     @Override
     public void getData(String data) {
-        department = data;
+        departmentSet = data;
     }
-
 }

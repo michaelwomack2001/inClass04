@@ -65,7 +65,6 @@ public class MainActivityFragment extends Fragment {
        /* if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-
         }
 
         */
@@ -82,7 +81,7 @@ public class MainActivityFragment extends Fragment {
             public void onClick(View view) {
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragmentMain, new RegistrationFragment(),"RegFragment");
-                transaction.addToBackStack(null);
+                transaction.addToBackStack("MainFragment");
                 transaction.commit();
             }
         });

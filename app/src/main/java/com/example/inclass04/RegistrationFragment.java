@@ -30,10 +30,13 @@ public class RegistrationFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM3 = "param3";
+    private static final String ARG_PARAM4 = "param4";
 
 
     // TODO: Rename and change types of parameters
-    private String deparment;
+    private String department, name, email, id;
 
 
     public RegistrationFragment() {
@@ -49,10 +52,13 @@ public class RegistrationFragment extends Fragment {
      * @return A new instance of fragment RegistrationFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static RegistrationFragment newInstance(String department) {
+    public static RegistrationFragment newInstance(String name, String email, String id, String department) {
         RegistrationFragment fragment = new RegistrationFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, department);
+        args.putString(ARG_PARAM1, name);
+        args.putString(ARG_PARAM2, email);
+        args.putString(ARG_PARAM3, id);
+        args.putString(ARG_PARAM4, department);
         fragment.setArguments(args);
         return fragment;
     }
@@ -61,14 +67,18 @@ public class RegistrationFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            this.deparment = getArguments().getString(ARG_PARAM1);
+            this.name = getArguments().getString(ARG_PARAM1);
+            this.email = getArguments().getString(ARG_PARAM2);
+            this.id = getArguments().getString(ARG_PARAM3);
+            this.department = getArguments().getString(ARG_PARAM4);
         }
 
     }
     public void update(String department){
-        this.deparment = department;
+        this.department = department;
         dept_select.setText(department);
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,8 +89,8 @@ public class RegistrationFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragmentMain, new SelectDepartmentFragment());
-                transaction.addToBackStack(null);
+                transaction.replace(R.id.fragmentMain, new SelectDepartmentFragment(),"SelectFragment");
+                transaction.addToBackStack("RegFragment");
                 transaction.commit();
             }
         });
@@ -96,6 +106,8 @@ public class RegistrationFragment extends Fragment {
 
 
 
+
+
         regView.findViewById(R.id.submit_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,7 +119,6 @@ public class RegistrationFragment extends Fragment {
                 }
                 else{
                     user = new User(name,email, id, dept_select.toString());
-
 
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.fragmentMain, new ProfileFragment());
