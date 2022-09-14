@@ -26,6 +26,7 @@ public class RegistrationFragment extends Fragment {
     User user;
     EditText name_input, email_input, id_input;
     TextView dept_select;
+    final static String DEPT = "department_selection";
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -72,7 +73,6 @@ public class RegistrationFragment extends Fragment {
         dept_select.setText(department);
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -89,17 +89,18 @@ public class RegistrationFragment extends Fragment {
             }
         });
 
-        name_input = regView.findViewById(R.id.name);
-        String name = name_input.getText().toString();
+            name_input = regView.findViewById(R.id.name);
+            String name = name_input.getText().toString();
 
-        email_input = regView.findViewById(R.id.email);
-        String email = email_input.getText().toString();
+            email_input = regView.findViewById(R.id.email);
+            String email = email_input.getText().toString();
 
-        id_input = regView.findViewById(R.id.id);
-        String id = id_input.getText().toString();
+            id_input = regView.findViewById(R.id.id);
+            String id = id_input.getText().toString();
 
-        dept_select = regView.findViewById(R.id.dept_view);
-        dept_select.setText(department);
+            dept_select = (TextView) regView.findViewById(R.id.dept_view);
+            dept_select.setText(this.department);
+
 
 
         regView.findViewById(R.id.submit_btn).setOnClickListener(new View.OnClickListener() {
@@ -107,15 +108,15 @@ public class RegistrationFragment extends Fragment {
             public void onClick(View view) {
 
                 if ((name.isEmpty()) || email.isEmpty() || id.isEmpty() || dept_select.toString().isEmpty()) {
-                    Toast toast2 = Toast.makeText(getActivity(), "Missing Information", Toast.LENGTH_SHORT);
-                    toast2.setGravity(Gravity.CENTER, 0, 0);
-                    toast2.show();
+                    Toast toast = Toast.makeText(getActivity(), "Missing Information", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                 }
                 else{
-                    user = new User(name,email, id, dept_select.toString());
 
+                    user = new User(name,email, id, dept_select.toString());
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.fragmentMain, new ProfileFragment());
+                    transaction.replace(R.id.fragmentMain, new ProfileFragment(),"ProfileFragment");
                     transaction.addToBackStack(null);
                     transaction.commit();
                 }
@@ -126,6 +127,41 @@ public class RegistrationFragment extends Fragment {
 
         return regView;
     }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Bundle args = getArguments();
+        if(args!=null){
+            name_input.getText().toString();
+
+            email_input.getText().toString();
+
+            id_input.getText().toString();
+
+            dept_select.setText(args.getString(DEPT));
+        }
+    }
+
+   // @Override
+    /*public void onStart() {
+        super.onStart();
+        Bundle args = getArguments();
+        if(args!=null){
+            name_input.getText().toString();
+
+            email_input.getText().toString();
+
+            id_input.getText().toString();
+
+            dept_select.setText(args.getString(DEPT));
+        }
+    }
+
+     */
+
+
 
     @Override
     public void onAttach(@NonNull Context context) {

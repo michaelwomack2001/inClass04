@@ -11,14 +11,17 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements SelectDepartmentFragment.DepartmentParse {
 
     String departmentSet;
+    User profile;
 
     @Override
     public void getDeptName(String data) {
-        /*RegistrationFragment regFrag = (RegistrationFragment)getSupportFragmentManager().findFragmentByTag("RegFragment");
-        ((TextView)regFrag.getView().findViewById(R.id.dept_view)).setText(data);
 
-         */
-        departmentSet = data;
+        RegistrationFragment regFragment = new RegistrationFragment();
+        Bundle args = new Bundle();
+        args.putString(RegistrationFragment.DEPT,data);
+        regFragment.setArguments(args);
+        //getSupportFragmentManager().beginTransaction().replace(R.id.fragmentMain,regFragment).commit();
+
     }
 
     @Override
@@ -30,25 +33,21 @@ public class MainActivity extends AppCompatActivity implements SelectDepartmentF
                 .add(R.id.fragmentMain,new MainActivityFragment(),"MainFragment")
                 .commit();
 
-
-
         RegistrationFragment regFrag = (RegistrationFragment) getSupportFragmentManager().findFragmentByTag("RegFragment");
         if (regFrag!=null){
             regFrag.update(departmentSet);
         }
 
-
-
-
-
-
+        ProfileFragment profileFragment = (ProfileFragment) getSupportFragmentManager().findFragmentByTag("ProfileFragment");
+        if (profileFragment!=null){
+            profileFragment.updateProfile(profile);
+        }
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
 
     }
 
@@ -59,10 +58,4 @@ public class MainActivity extends AppCompatActivity implements SelectDepartmentF
 
 
 
-    /*@Override
-    public void getData(String data) {
-        departmentSet = data;
-    }
-
-     */
 }

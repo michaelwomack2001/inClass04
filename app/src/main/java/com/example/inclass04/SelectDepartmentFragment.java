@@ -69,11 +69,11 @@ public class SelectDepartmentFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        try{
+        if (context instanceof DepartmentParse){
             selectedDept = (DepartmentParse) context;
         }
-        catch (ClassCastException e){
-            throw new ClassCastException(context.toString()+"");
+        else{
+            throw new RuntimeException(context.toString()+"must implement the interface");
         }
     }
 
@@ -81,17 +81,12 @@ public class SelectDepartmentFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       /* if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
-        */
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View deptView =  inflater.inflate(R.layout.fragment_select_department, container, false);
 
@@ -105,25 +100,20 @@ public class SelectDepartmentFragment extends Fragment {
 
                 int checked = department.getCheckedRadioButtonId();
                 if(checked==R.id.cs){
-                    dept_out = "Computer Science";
+                    selectedDept.getDeptName("Computer Science");
                 }
                 else if (checked==R.id.software){
-                    dept_out = "Software Info. Systems";
+                    selectedDept.getDeptName("Software Info. Systems");
                 }
                 else if (checked==R.id.bio){
-                    dept_out = "Bio Informatics";
+                    selectedDept.getDeptName("Bio Informatics");
                 }
                 else {
-                    dept_out = "Data Science";
+                    selectedDept.getDeptName("Data Science");
                 }
 
-                selectedDept.getDeptName(dept_out);
-
-
-
-                //select_dept.getData(dept_out);
-                //FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 getActivity().getSupportFragmentManager().popBackStack();
+
 
             }
 
@@ -141,26 +131,6 @@ public class SelectDepartmentFragment extends Fragment {
     }
 
 
-/*
 
-    public interface DepartmentReceiver
-    {
-        void getData(String data);
-    }
-
-    DepartmentReceiver select_dept;
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if (context instanceof DepartmentReceiver){
-            select_dept = (DepartmentReceiver) context;
-        }
-        else{
-            throw new RuntimeException(context.toString()+"");
-        }
-    }
-
-     */
 
 }

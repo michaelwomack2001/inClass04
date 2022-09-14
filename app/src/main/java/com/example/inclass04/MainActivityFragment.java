@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -62,12 +63,6 @@ public class MainActivityFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       /* if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
-        */
     }
 
     @Override
@@ -76,18 +71,31 @@ public class MainActivityFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View mainView =  inflater.inflate(R.layout.fragment_main_activity, container, false);
-        mainView.findViewById(R.id.registerBtn).setOnClickListener(new View.OnClickListener() {
+      /*  mainView.findViewById(R.id.registerBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragmentMain, new RegistrationFragment(),"RegFragment");
-                transaction.addToBackStack("MainFragment");
                 transaction.commit();
             }
         });
+
+       */
         return mainView;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getActivity().findViewById(R.id.registerBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentMain, new RegistrationFragment(),"RegFragment");
+                transaction.commit();
+            }
+        });
+    }
 
     @Override
     public void onAttach(@NonNull Context context) {
