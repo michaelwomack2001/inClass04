@@ -97,11 +97,15 @@ public class MainActivity extends AppCompatActivity implements SelectDepartmentF
     @Override
     public void gotoProfile(User user) {
 
+        profile = user;
 
         ProfileFragment profFrag = (ProfileFragment) getSupportFragmentManager().findFragmentByTag("ProfileFragment");
         if (profFrag!=null) {
-            profFrag.createProfile(user.getName(), user.getEmail(), user.getId(), user.getDept());
+            profFrag.createProfile(profile.getName(), profile.getEmail(), profile.getId(), profile.getDept());
         }
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentMain,new ProfileFragment(),"ProfileFragment")
+                .commit();
 
     }
 }

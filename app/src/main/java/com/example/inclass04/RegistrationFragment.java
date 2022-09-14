@@ -122,7 +122,7 @@ public class RegistrationFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if ((name.isEmpty()) || email.isEmpty() || id.isEmpty() || dept_select.toString().isEmpty()) {
+                if ( name.isEmpty() && email.isEmpty() && id.isEmpty() && dept_select.toString().isEmpty()) {
                     Toast toast = Toast.makeText(getActivity(), "Missing Information", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
