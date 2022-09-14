@@ -23,7 +23,9 @@ public class User {
         return id;
     }
 
-    public void setDept(String dept) {
-        this.dept = dept;
+    public String getDept() {
+        return dept;
     }
+
+
 }

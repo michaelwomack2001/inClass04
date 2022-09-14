@@ -60,6 +60,8 @@ public class SelectDepartmentFragment extends Fragment {
     }
 
      */
+
+
     public interface DepartmentParse{
         public void getDeptName(String data);
     }
@@ -93,7 +95,6 @@ public class SelectDepartmentFragment extends Fragment {
         department = deptView.findViewById(R.id.concentration);
 
 
-
         deptView.findViewById(R.id.select).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,13 +113,12 @@ public class SelectDepartmentFragment extends Fragment {
                     selectedDept.getDeptName("Data Science");
                 }
 
-                getActivity().getSupportFragmentManager().popBackStack();
+                //getActivity().getSupportFragmentManager().popBackStack();
 
 
             }
 
         });
-
 
         deptView.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,8 +129,4 @@ public class SelectDepartmentFragment extends Fragment {
 
         return deptView;
     }
-
-
-
-
 }

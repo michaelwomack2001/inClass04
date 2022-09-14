@@ -20,12 +20,11 @@ public class ProfileFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private static final String ARG_PARAM3 = "param2";
-    private static final String ARG_PARAM4 = "param2";
+    private static final String ARG_PARAM3 = "param3";
+    private static final String ARG_PARAM4 = "param4";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String name, email, id, department;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -55,12 +54,27 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      /*  if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        if (getArguments() != null) {
+            this.name = getArguments().getString(ARG_PARAM1);
+            this.email = getArguments().getString(ARG_PARAM2);
+            this.id = getArguments().getString(ARG_PARAM3);
+            this.department = getArguments().getString(ARG_PARAM4);
         }
 
-       */
+
+    }
+
+
+    public void createProfile(String name, String email, String id, String department){
+        this.name = name;
+        this.email = email;
+        this.id = id;
+        this.department = department;
+        name_out.setText(name);
+        email_out.setText(email);
+        id_out.setText(id);
+        department_out.setText(department);
+
     }
 
     @Override
