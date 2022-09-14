@@ -1,6 +1,7 @@
 package com.example.inclass04;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -59,6 +60,22 @@ public class SelectDepartmentFragment extends Fragment {
     }
 
      */
+    public interface DepartmentParse{
+        public void getDeptName(String data);
+    }
+
+    DepartmentParse selectedDept;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try{
+            selectedDept = (DepartmentParse) context;
+        }
+        catch (ClassCastException e){
+            throw new ClassCastException(context.toString()+"");
+        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -100,22 +117,31 @@ public class SelectDepartmentFragment extends Fragment {
                     dept_out = "Data Science";
                 }
 
+                selectedDept.getDeptName(dept_out);
 
-                select_dept.getData(dept_out);
 
 
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                //select_dept.getData(dept_out);
+                //FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 getActivity().getSupportFragmentManager().popBackStack();
 
             }
 
         });
 
+
+        deptView.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+
         return deptView;
     }
 
 
-
+/*
 
     public interface DepartmentReceiver
     {
@@ -135,6 +161,6 @@ public class SelectDepartmentFragment extends Fragment {
         }
     }
 
-
+     */
 
 }
