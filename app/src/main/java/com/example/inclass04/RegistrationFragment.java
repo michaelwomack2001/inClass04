@@ -100,12 +100,7 @@ public class RegistrationFragment extends Fragment {
             public void onClick(View view) {
                 regint.gotoSelect();
 
-               /* FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragmentMain, new SelectDepartmentFragment(),"SelectFragment");
-                transaction.addToBackStack("RegFragment");
-                transaction.commit();
 
-                */
             }
         });
 
@@ -127,12 +122,12 @@ public class RegistrationFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-               // if ((name.isEmpty()) || email.isEmpty() || id.isEmpty() || dept_select.toString().isEmpty()) {
-              //      Toast toast = Toast.makeText(getActivity(), "Missing Information", Toast.LENGTH_SHORT);
-              //      toast.setGravity(Gravity.CENTER, 0, 0);
-              //      toast.show();
-              //  }
-               // else{
+                if ((name.isEmpty()) || email.isEmpty() || id.isEmpty() || dept_select.toString().isEmpty()) {
+                    Toast toast = Toast.makeText(getActivity(), "Missing Information", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
+                else{
 
                     user = new User(name,email, id, dept_select.toString());
                     regint2.gotoProfile(user);
@@ -142,7 +137,7 @@ public class RegistrationFragment extends Fragment {
                     transaction.commit();
 
                     */
-               // }
+                }
 
 
             }
@@ -167,22 +162,7 @@ public class RegistrationFragment extends Fragment {
         }
     }
 
-   // @Override
-    /*public void onStart() {
-        super.onStart();
-        Bundle args = getArguments();
-        if(args!=null){
-            name_input.getText().toString();
 
-            email_input.getText().toString();
-
-            id_input.getText().toString();
-
-            dept_select.setText(args.getString(DEPT));
-        }
-    }
-
-     */
 
     RegInt regint;
     public interface  RegInt{

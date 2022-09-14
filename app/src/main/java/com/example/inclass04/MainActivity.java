@@ -48,17 +48,7 @@ public class MainActivity extends AppCompatActivity implements SelectDepartmentF
         }
 
 
-        /*
-        RegistrationFragment regFrag = (RegistrationFragment) getSupportFragmentManager().findFragmentByTag("RegFragment");
-        if (regFrag!=null){
-            regFrag.update(departmentSet);
-        }
 
-        ProfileFragment profileFragment = (ProfileFragment) getSupportFragmentManager().findFragmentByTag("ProfileFragment");
-        if (profileFragment!=null){
-            profileFragment.updateProfile(profile);
-        }
-         */
 
     }
 
@@ -95,12 +85,7 @@ public class MainActivity extends AppCompatActivity implements SelectDepartmentF
 
         departmentSet = data;
 
-        /*RegistrationFragment regFragment = new RegistrationFragment();
-        Bundle args = new Bundle();
-        args.putString(RegistrationFragment.DEPT,data);
-        regFragment.setArguments(args);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentMain,regFragment).commit();
-         */
+
         RegistrationFragment regFrag = (RegistrationFragment) getSupportFragmentManager().findFragmentByTag("RegFragment");
         if (regFrag!=null) {
             regFrag.update("","","",departmentSet);

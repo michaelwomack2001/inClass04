@@ -113,7 +113,7 @@ public class SelectDepartmentFragment extends Fragment {
                     selectedDept.getDeptName("Data Science");
                 }
 
-                //getActivity().getSupportFragmentManager().popBackStack();
+                getActivity().getSupportFragmentManager().popBackStack();
 
 
             }

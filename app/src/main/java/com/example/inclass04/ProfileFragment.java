@@ -24,6 +24,8 @@ public class ProfileFragment extends Fragment {
     private static final String ARG_PARAM4 = "param4";
 
     // TODO: Rename and change types of parameters
+
+    TextView name_out, email_out, id_out, department_out;
     private String name, email, id, department;
 
     public ProfileFragment() {
@@ -82,18 +84,20 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View profileView = inflater.inflate(R.layout.fragment_profile, container, false);
+
         name_out = profileView.findViewById(R.id.nameResult);
         email_out = profileView.findViewById(R.id.emailResult);
         id_out = profileView.findViewById(R.id.IdResult);
         department_out = profileView.findViewById(R.id.deptResult);
 
+        name_out.setText(this.name);
+        email_out.setText(this.email);
+        id_out.setText(this.id);
+        department_out.setText(this.department);
+
         return profileView;
     }
-    User user;
-    TextView name_out, email_out, id_out, department_out;
 
 
-    public void updateProfile(User user){
-        this.user = user;
-    }
+
 }
