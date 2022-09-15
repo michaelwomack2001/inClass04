@@ -8,13 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements SelectDepartmentFragment.DepartmentParse, MainActivityFragment.MaintIn, RegistrationFragment.RegInt, RegistrationFragment.RegInt2 {
+public class MainActivity extends AppCompatActivity implements SelectDepartmentFragment.DepartmentParse, MainActivityFragment.MaintIn, RegistrationFragment.RegInt{
 
     String departmentSet;
     String gotoFrag = "MainFragment";
     User profile;
-
-
 
 
     @Override
@@ -24,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements SelectDepartmentF
 
         if (gotoFrag.equals("MainFragment")){
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragmentMain,new MainActivityFragment(),"RegFragment")
+                    .add(R.id.fragmentMain,new MainActivityFragment(),"MainFragment")
                     .commit();
         }
 
@@ -90,22 +88,25 @@ public class MainActivity extends AppCompatActivity implements SelectDepartmentF
         if (regFrag!=null) {
             regFrag.update("","","",departmentSet);
         }
+    }
+
+    @Override
+    public void gotoProfile(User dataUser) {
+
+        profile = dataUser;
+        ProfileFragment profFrag = (ProfileFragment) getSupportFragmentManager().findFragmentByTag("ProfileFragment");
+            //profFrag.createProfile("Linh","@dff","hgfgg","cs");
+            profFrag.createProfile(profile.getName(), profile.getEmail(), profile.getId(), profile.getDept());
+
+
+
 
     }
 
-
     @Override
-    public void gotoProfile(User user) {
-
-        profile = user;
-
-        ProfileFragment profFrag = (ProfileFragment) getSupportFragmentManager().findFragmentByTag("ProfileFragment");
-        if (profFrag!=null) {
-            profFrag.createProfile(profile.getName(), profile.getEmail(), profile.getId(), profile.getDept());
-        }
+    public void profile() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentMain,new ProfileFragment(),"ProfileFragment")
-                .commit();
-
+                .replace(R.id.fragmentMain, new ProfileFragment(),"ProfileFragment")
+                .commitNow();
     }
 }

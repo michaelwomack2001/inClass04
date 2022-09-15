@@ -1,7 +1,7 @@
 package com.example.inclass04;
 
 public class User {
-    String name, email, dept, id;
+    String name, email, id, dept;
 
 
     public User( String name, String email, String id, String dept){

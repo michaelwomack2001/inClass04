@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +43,7 @@ public class RegistrationFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private String name, email, id, department;
+
 
 
     public RegistrationFragment() {
@@ -100,46 +102,42 @@ public class RegistrationFragment extends Fragment {
             public void onClick(View view) {
                 regint.gotoSelect();
 
-
             }
         });
 
-            name_input = regView.findViewById(R.id.name);
-            String name = name_input.getText().toString();
-
-            email_input = regView.findViewById(R.id.email);
-            String email = email_input.getText().toString();
-
-            id_input = regView.findViewById(R.id.id);
-            String id = id_input.getText().toString();
-
-            dept_select = (TextView) regView.findViewById(R.id.dept_view);
-            dept_select.setText(this.department);
-
+        dept_select = regView.findViewById(R.id.dept_view);
+        dept_select.setText(department);
 
 
         regView.findViewById(R.id.submit_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("hhh", "onClick: ");
 
-                if ( name.isEmpty() && email.isEmpty() && id.isEmpty() && dept_select.toString().isEmpty()) {
+                name_input = regView.findViewById(R.id.name);
+                String name = name_input.getText().toString();
+
+                email_input = regView.findViewById(R.id.email);
+                String email = email_input.getText().toString();
+
+                id_input = regView.findViewById(R.id.id);
+                String id = id_input.getText().toString();
+
+
+                if ( name.equals("") || email.equals("")  || id.equals("") || dept_select.getText().toString().isEmpty()) {
                     Toast toast = Toast.makeText(getActivity(), "Missing Information", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }
-                else{
+                else {
 
-                    user = new User(name,email, id, dept_select.toString());
-                    regint2.gotoProfile(user);
-                   /* FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.fragmentMain, new ProfileFragment(),"ProfileFragment");
-                    transaction.addToBackStack(null);
-                    transaction.commit();
 
-                    */
+                    user = new User(name, email, id, dept_select.getText().toString());
+                    regint.profile();
+                    regint.gotoProfile(user);
+
+
                 }
-
-
             }
         });
 
@@ -163,16 +161,14 @@ public class RegistrationFragment extends Fragment {
     }
 
 
-
     RegInt regint;
     public interface  RegInt{
-        void gotoSelect();
+       public void gotoSelect();
+       public void gotoProfile(User user);
+
+       public void profile();
     }
 
-    RegInt2 regint2;
-    public interface RegInt2{
-        void gotoProfile(User user);
-    }
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -183,10 +179,5 @@ public class RegistrationFragment extends Fragment {
             throw new RuntimeException(context.toString() + "must implement RegInt");
         }
 
-        if (context instanceof RegInt2 ) {
-            regint2 = (RegInt2)context;
-        } else {
-            throw new RuntimeException(context.toString() + "must implement RegInt");
-        }
     }
 }

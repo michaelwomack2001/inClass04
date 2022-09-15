@@ -115,7 +115,6 @@ public class SelectDepartmentFragment extends Fragment {
 
                 getActivity().getSupportFragmentManager().popBackStack();
 
-
             }
 
         });

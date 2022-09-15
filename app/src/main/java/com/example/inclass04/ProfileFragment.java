@@ -1,7 +1,9 @@
 package com.example.inclass04;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -48,7 +50,6 @@ public class ProfileFragment extends Fragment {
         args.putString(ARG_PARAM2, email);
         args.putString(ARG_PARAM3, id);
         args.putString(ARG_PARAM4, department);
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -62,10 +63,7 @@ public class ProfileFragment extends Fragment {
             this.id = getArguments().getString(ARG_PARAM3);
             this.department = getArguments().getString(ARG_PARAM4);
         }
-
-
     }
-
 
     public void createProfile(String name, String email, String id, String department){
         this.name = name;
@@ -85,19 +83,24 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View profileView = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        name_out = profileView.findViewById(R.id.nameResult);
-        email_out = profileView.findViewById(R.id.emailResult);
-        id_out = profileView.findViewById(R.id.IdResult);
-        department_out = profileView.findViewById(R.id.deptResult);
+        name_out = (TextView)profileView.findViewById(R.id.nameResult);
+        email_out = (TextView)profileView.findViewById(R.id.emailResult);
+        id_out = (TextView)profileView.findViewById(R.id.IdResult);
+        department_out = (TextView)profileView.findViewById(R.id.deptResult);
 
         name_out.setText(this.name);
         email_out.setText(this.email);
         id_out.setText(this.id);
         department_out.setText(this.department);
+        getActivity().getSupportFragmentManager().beginTransaction();
+
+
 
         return profileView;
     }
 
-
-
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+    }
 }
