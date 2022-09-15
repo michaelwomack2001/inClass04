@@ -11,101 +11,98 @@
         android:id="@+id/nameLbl2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="47dp"
+        android:layout_marginTop="20dp"
         android:text="@string/nameLbl2"
         app:layout_constraintBottom_toTopOf="@+id/emailLbl2"
         app:layout_constraintEnd_toStartOf="@+id/nameResult"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.841" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/emailLbl2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="59dp"
+        android:layout_marginTop="50dp"
         android:text="@string/emailLbl2"
         app:layout_constraintBottom_toTopOf="@+id/idLbl2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.286"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameLbl2" />
 
     <TextView
         android:id="@+id/idLbl2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="67dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
         android:text="@string/idLbl2"
         app:layout_constraintBottom_toTopOf="@+id/deptLbl2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailLbl2" />
 
     <TextView
         android:id="@+id/deptLbl2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="320dp"
+        android:layout_marginTop="50dp"
         android:text="@string/deptLbl2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/deptResult"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/idLbl2"
+        app:layout_constraintVertical_bias="0.798" />
 
     <TextView
         android:id="@+id/nameResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="62dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="184dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginTop="20dp"
         android:text="@string/nameResult"
         app:layout_constraintBottom_toTopOf="@+id/emailResult"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/nameLbl2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.83" />
+        app:layout_constraintVertical_bias="0.594" />
 
     <TextView
         android:id="@+id/emailResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="62dp"
-        android:layout_marginEnd="184dp"
-        android:layout_marginBottom="59dp"
+        android:layout_marginTop="60dp"
         android:text="@string/emailResult"
         app:layout_constraintBottom_toTopOf="@+id/IdResult"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintStart_toEndOf="@+id/emailLbl2" />
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toEndOf="@+id/emailLbl2"
+        app:layout_constraintTop_toBottomOf="@+id/nameResult" />
 
     <TextView
         android:id="@+id/IdResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="62dp"
-        android:layout_marginEnd="184dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginTop="50dp"
         android:text="@string/IdResult"
         app:layout_constraintBottom_toTopOf="@+id/deptResult"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toEndOf="@+id/idLbl2" />
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toEndOf="@+id/idLbl2"
+        app:layout_constraintTop_toBottomOf="@+id/emailResult" />
 
     <TextView
         android:id="@+id/deptResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="184dp"
-        android:layout_marginBottom="320dp"
+        android:layout_marginTop="50dp"
         android:text="@string/deptResult"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.928"
-        app:layout_constraintStart_toEndOf="@+id/deptLbl2" />
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toEndOf="@+id/deptLbl2"
+        app:layout_constraintTop_toBottomOf="@+id/IdResult" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
